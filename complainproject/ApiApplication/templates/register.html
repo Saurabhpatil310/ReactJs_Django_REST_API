@@ -1,0 +1,69 @@
+{% extends "nav.html" %}
+
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- Link to your static CSS file -->
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+
+    <!-- Bootstrap CSS via CDN -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap and jQuery JavaScript via CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper fadeIn">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!-- Replace the image source with your own -->
+      <img src="{% static 'images/reg.png' %}" id="icon" alt="User Icon" />    
+
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST">
+
+        {% csrf_token %}
+      <!-- Use Django template tags if needed for form handling -->
+      <input type="text" id="register"  name="username" placeholder="Username">
+      <input type="text" id="register" name="fname" placeholder="First name">
+      <input type="text" id="register" name="lname" placeholder="Last name">
+      <input type="text" id="register" name="email" placeholder="Email">
+      <input type="text" id="register" name="password" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Register">
+      <p>Already have an account? <a href="login">Login Here</a></p>
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- <div id="formFooter">
+      <a class="underlineHover" href="/">Login Here</a>
+    </div> -->
+
+  </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

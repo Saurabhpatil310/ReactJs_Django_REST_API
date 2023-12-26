@@ -1,0 +1,44 @@
+{% extends "nav.html" %} {% block content %} {% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit Complaint</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Your custom CSS styles here */
+      body {
+        padding-top: 0px;
+      }
+      form {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Submit Complaint</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" id="title" name="title" />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+{% endblock %}
